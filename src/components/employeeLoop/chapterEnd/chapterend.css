@@ -43,6 +43,11 @@
     padding-top: 7rem;
     /* border: 1px solid red; */
 }
+@media (min-width: 1200px) {
+    .chapterend-detail {
+      max-width: 30%;
+    }
+  }
 
 .detail-text {
     /* background-color: rgba(179, 179, 179, 0.452); */

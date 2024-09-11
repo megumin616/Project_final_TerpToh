@@ -57,11 +57,16 @@
     text-align: center;
     /* border: 1px solid red; */
 }
+@media (min-width: 1200px) {
+    .chapter5-detail {
+      max-width: 30%;
+    }
+  }
 
 .detail-text {
     /* background-color: rgba(179, 179, 179, 0.452); */
     /* border: 1px solid rgb(35, 129, 245); */
-    width: 80vw;
+    /* width: 30vw; */
     border-radius: 25px;
 }
 

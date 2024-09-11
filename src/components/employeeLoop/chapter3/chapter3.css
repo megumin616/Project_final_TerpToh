@@ -31,9 +31,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     /* border: 1px solid red; */
+  }
+  @media (min-width: 1200px) {
+    .chapter3-detail {
+      max-width: 30%;
+    }
   }
   .detail-text {
     /* background-color: rgba(179, 179, 179, 0.452); */
@@ -46,4 +51,12 @@
     position: absolute;
     bottom: 5%;
     right: 10%;
+  }
+
+  #detail-p-chapter3 {
+    margin-top: 20vh;
+  }
+
+  #detail-h3-chapter3 {
+    margin-top: 44vh;
   }

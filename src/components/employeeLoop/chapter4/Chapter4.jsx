@@ -216,7 +216,7 @@ export default function Chapter4() {
         <div className="detail-text">
           {showHeader && <h3>บทที่ 4 การตัดสินใจที่ยากลำบาก</h3>}
 
-          <p className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p id="detail-p-chapter4" className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
             {content}
           </p>
           {buttonShow ? (

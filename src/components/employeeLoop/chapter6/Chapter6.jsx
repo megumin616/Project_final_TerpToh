@@ -101,7 +101,7 @@ export default function Chapter6() {
         <div className="detail-text" style={{ display: displaytext }}>
           {showHeader && <h3>บทที่ 6 การเผชิญกับอุปสรรค</h3>}
 
-          <p className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p id="detail-p-chapter6" className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
             ในขณะที่ {userName} กำลังเดินหน้าตามหาความฝัน
             แน่นอนว่าจะต้องพบเจอกับอุปสรรคมากมาย
             <br />
@@ -111,7 +111,7 @@ export default function Chapter6() {
             ถึงแม้บางครั้ง {userName}{" "}
             จะรู้สึกถึงความท้าทายที่ต้องเผชิญอย่างหนักหน่วง <br />{" "}
             <span style={{ color: "rgb(35, 129, 245)" }}>
-              แต่หากเป็นตัวคุณในตอนนี้ คุณจะเลือกที่จะสู้ต่อไปหรือไม่?
+              แต่หากเป็นตัว{userName}ในตอนนี้ {userName}จะเลือกที่จะสู้ต่อไปหรือไม่?
             </span>
           </p>
           {showButtonAsk ? (
@@ -128,7 +128,7 @@ export default function Chapter6() {
         {content.length > 0 && (
           <div className="detail-text">
             {content.slice(0, currentLineIndex).map((line, index) => (
-              <p key={index} className="fade-in-line">
+              <p id="detail-p-chapter6" key={index} className="fade-in-line">
                 {line}
               </p>
             ))}

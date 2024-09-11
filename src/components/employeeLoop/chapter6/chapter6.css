@@ -13,3 +13,8 @@
     opacity: 0;
     /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
 }
+
+#detail-p-chapter6 {
+    background: rgba(255, 255, 255, 0.804);
+    border-radius: 25px;
+}

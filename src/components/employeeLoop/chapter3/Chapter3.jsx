@@ -15,7 +15,7 @@ export default function Chapter3() {
 
   const content = [
     `วันหนึ่ง ขณะที่ ${userName} เดินอยู่ในสวนสาธารณะเพื่อผ่อนคลาย`,
-    `${userName} ได้พบกับชายชราผู้หนึ่งที่กำลังนั่งเขียนบทความในสมุดเล่มเล็กๆ`,
+    `${userName} ได้พบกับชายชราผู้หนึ่งที่กำลังนั่งอ่านบทความในสมุดเล่มเล็กๆ`,
     `${userName} จึงเดินเข้าไปหา`,
     `ชายชราเล่าให้ ${userName} ฟังถึงการใช้ชีวิตที่มีความสุขจากการทำในสิ่งที่ตนเองรัก`,
     `แม้ว่าจะไม่ได้เป็นที่ยอมรับในสังคมก็ตาม`,
@@ -107,9 +107,10 @@ export default function Chapter3() {
     >
       <div className="chapter3-detail">
         <div className="detail-text">
-          {showHeader && <h3>บทที่ 3 แรงบันดาลใจจากการพบเจอ</h3>}
+          {showHeader && <h3 id='detail-h3-chapter3'>บทที่ 3 แรงบันดาลใจจากการพบเจอ</h3>}
 
           <p
+            id="detail-p-chapter3"
             style={{ display: textDisplay }}
             className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}
           >
@@ -130,7 +131,7 @@ export default function Chapter3() {
           )}
           {showInput ? (
             <div>
-              <p>รักษามันไว้นะ ความฝันของคุณหน่ะ!</p>
+              <p id='detail-h3-chapter3'>รักษามันไว้นะ ความฝันของคุณหน่ะ!</p>
               <button
                 style={{ color: "rgb(35, 129, 245)" }}
                 onClick={handleNext}

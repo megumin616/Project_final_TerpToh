@@ -31,9 +31,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     /* border: 1px solid red; */
+  }
+  @media (min-width: 1200px) {
+    .chapter2-detail {
+      max-width: 30%;
+    }
   }
   .detail-text {
     /* background-color: rgba(179, 179, 179, 0.452); */
@@ -45,4 +50,22 @@
     position: absolute;
     bottom: 5%;
     right: 10%;
+  }
+
+#detail-h3-chapter2 {
+    margin-top: 44vh;
+  }
+
+  .ask-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid red; */
+    height: 100vh;
+  }
+
+  #detail-text-chapter2 {
+    background: rgba(255, 255, 255, 0.804);
+    border-radius: 25px;
+    margin-top: 25vh;
   }

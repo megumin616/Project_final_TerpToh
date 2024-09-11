@@ -129,7 +129,8 @@ export default function Toyou() {
   };
 
   return (
-    <div className="container-toyou" style={{ backgroundImage: `url(${bg})` }}>
+    <div className="main-container-toyou">
+      <div className="container-toyou" style={{ backgroundImage: `url(${bg})` }}>
       <div className="toyou-detail" style={{ display: noneDisplay }}>
         <div className="detail-text fade-intoyou">
           <p id="toyou-p">ข้อความจากชายชรา</p>
@@ -227,6 +228,7 @@ export default function Toyou() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

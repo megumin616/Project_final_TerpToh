@@ -9,7 +9,13 @@
     display: flex;
     justify-content: center;
     max-width: fit-content;
+    /* border: 1px solid red; */
 }
+@media (min-width: 1200px) {
+    .home-detail {
+      max-width: 30%;
+    }
+  }
 .home-text {
     width: 80%;
 }

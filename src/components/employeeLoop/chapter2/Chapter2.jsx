@@ -24,7 +24,7 @@ export default function Chapter2() {
 
     const content = [
         `หนึ่งคืนที่เงียบสงบ ${userName} ได้นั่งพักผ่อนในห้องและบังเอิญพบสมุดบันทึกเก่าๆของเขา`,
-        `ที่เต็มไปด้วยภาพวาดและข้อความเกี่ยวกับความฝันในการ ทำ/เป็น ${userDream}`,
+        `ที่เต็มไปด้วยภาพวาดและข้อความเกี่ยวกับความฝันในการเป็น ${userDream}`,
         `${userName} รู้สึกถึงความตื่นเต้นที่เคยมีเมื่อครั้งเป็นเด็ก`,
         `ความฝันที่เคยสดใสตอนนั้นกลับมามีชีวิตอีกครั้งในความคิดของ ${userName}`,
     ];
@@ -111,18 +111,17 @@ export default function Chapter2() {
     >
       <div className="chapter2-detail">
         <div className="detail-text">
-          {showHeader && <h3>บทที่ 2 ความทรงจำในวัยเด็ก</h3>}
+          {showHeader && <h3 id='detail-h3-chapter2'>บทที่ 2 ความทรงจำในวัยเด็ก</h3>}
 
-          <p style={{display: textDisplay}} className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p style={{display: textDisplay}} id="detail-text-chapter2" className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
             {content[currentLine]}
           </p>
-
           {isNextEnabled && currentLine < content.length - 1 && (
             <button className="btn-chapter2" onClick={handleNextLine}>ถัดไป</button>
           )}
           {buttonShow ? <button onClick={handleInputDream} className="btn-chapter2">ถัดไป</button> : ""}
-          {showInput ? <div>
-            <p>หากความฝันของ {userName} เป็นจริง {userName} รู้สึกอย่างไรบ้าง?</p>
+          {showInput ? <div className='ask-input'>
+            <p>หากความฝันของ {userName} เป็นจริง {userName} จะรู้สึกอย่างไรบ้าง?</p>
             <input placeholder="ใส่ความฝันของคุณ..." onChange={(e) => setUserFeelDream(e.target.value)}/>
             {validateDream && (
             <p style={{ fontSize: "14px", color: "red" }}>

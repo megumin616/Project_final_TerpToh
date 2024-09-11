@@ -21,7 +21,7 @@ export default function Chapter1() {
     "การเดินทางจากบ้านไปที่ทำงานและกลับบ้านในตอนเย็นเป็นกิจวัตร",
     `${userName} เป็นพนักงานในบริษัทแห่งหนึ่ง ซึ่งเป็นแหล่งหาเลี้ยงชีพหลัก`,
     "แต่ในใจลึกๆ ตัวเขารู้สึกว่าชีวิตของเขาขาดอะไรบางอย่าง",
-    "บางอย่างที่คุณเคยได้ฝัน เมื่อนานมาแล้ว",
+    "บางอย่างที่เคยได้ฝัน เมื่อนานมาแล้ว",
   ];
 
   // สถานะสำหรับบรรทัดที่จะแสดง
@@ -120,13 +120,13 @@ export default function Chapter1() {
   return (
     <div
       className="container-chapter1"
-      style={{ backgroundImage: backgroundImage }}
+      style={{ backgroundImage: backgroundImage, backgroundRepeat: 'no-repeat' }}
     >
       <div className="chapter1-detail">
         <div className="detail-text">
           {showHeader && <h3>บทที่ 1 เริ่มต้นชีวิตประจำวัน</h3>}
 
-          <p style={{display: textDisplay}} className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p style={{display: textDisplay}} id="detail-text-chapter1" className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
             {content[currentLine]}
           </p>
 
@@ -135,7 +135,7 @@ export default function Chapter1() {
           )}
           {buttonShow ? <button onClick={handleInputDream} className="btn-chapter1">ถัดไป</button> : ""}
           {showInput ? <div>
-            <p>ความฝันในชีวิตคุณ คืออะไรเหรอ?</p>
+            <p>ความฝันในชีวิตคุณ อยากเป็นอะไรเหรอ?</p>
             <input placeholder="ใส่ความฝันของคุณ..." onChange={(e) => setUserDream(e.target.value)}/>
             {validateDream && (
             <p style={{ fontSize: "14px", color: "red" }}>

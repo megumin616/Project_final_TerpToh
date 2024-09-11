@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../App";
 import "./user.css";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ export default function User() {
   const {isPlaying1,togglePlay1 } = useAudio();
   // สร้าง state สำหรับเก็บข้อมูลที่ป้อนเข้ามา
   const [selectedOption, setSelectedOption] = useState("");
-  const { userName, setUserName, userAge, setUserAge } =
+  const { userName, setUserName, userAge, setUserAge, enterFullscreen } =
     useContext(DataContext);
 
   // สร้าง state สำหรับตรวจสอบความถูกต้องของข้อมูล
@@ -27,7 +27,6 @@ export default function User() {
 
   // ฟังก์ชันตรวจสอบข้อมูลและนำทางไปยังหน้าใหม่
   const handleNext = () => {
-    togglePlay1();
     let isValid = true;
 
     // ตรวจสอบชื่อ
@@ -57,8 +56,12 @@ export default function User() {
     // นำทางไปยังหน้าถัดไปหากข้อมูลทั้งหมดถูกต้อง
     if (isValid) {
       if (selectedOption === "วัยทำงาน") {
+        enterFullscreen();
+        togglePlay1();
         navigate("/chapter1"); // นำทางไปยังหน้าที่ชื่อ "chapter1"
       } else if (selectedOption === "นักศึกษา") {
+        enterFullscreen();
+        togglePlay1();
         navigate(""); // นำทางไปยังหน้าที่ชื่อ "anotherPage" (ระบุเส้นทางที่ต้องการ)
       }
     }

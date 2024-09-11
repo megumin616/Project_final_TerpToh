@@ -29,6 +29,34 @@ function App() {
     () => localStorage.getItem("userFeelDream") || ""
   ); //ความรู้สึกหากความฝันเป็นจริง
 
+  const containerRef = useRef(null);
+
+  const enterFullscreen = () => {
+    const elem = containerRef.current; // ใช้ ref เพื่ออ้างอิงถึงองค์ประกอบที่เราต้องการให้เต็มจอ
+    if (elem) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen()
+          .then(() => console.log("Entered fullscreen mode"))
+          .catch((err) => console.log("Error entering fullscreen: ", err));
+      } else if (elem.webkitRequestFullscreen) { // Safari
+        console.log("Fullscreen Safari");
+        elem.webkitRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) { // Firefox
+        console.log("Fullscreen Firefox");
+        elem.mozRequestFullScreen();
+      } else if (elem.msRequestFullscreen) { // IE/Edge
+        console.log("Fullscreen Edge");
+        elem.msRequestFullscreen();
+      } else {
+        console.log("Fullscreen API is not supported in this browser.");
+      }
+    } else {
+      console.log("Element not found");
+    }
+  };
+  
+  
+
   // ฟังก์ชันที่ใช้เก็บข้อมูลลงใน Local Storage เมื่อ state เปลี่ยนแปลง
   useEffect(() => {
     localStorage.setItem("userName", userName);
@@ -55,10 +83,16 @@ function App() {
     setUserDream,
     userFeelDream,
     setUserFeelDream,
+    enterFullscreen
   };
 
   return (
-    <BrowserRouter>
+    <div ref={containerRef} style={{
+      height: '100vh',       // ความสูงเต็มหน้าจอ
+      width: '100vw',        // ความกว้างเต็มหน้าจอ
+      backgroundColor: '#f0f0f0', // สีพื้นหลัง
+    }}>
+      <BrowserRouter>
       <DataContext.Provider value={userContextValue}>
         <AudioProvider>
           <Routes>
@@ -76,6 +110,7 @@ function App() {
         </AudioProvider>
       </DataContext.Provider>
     </BrowserRouter>
+    </div>
   );
 }
 
