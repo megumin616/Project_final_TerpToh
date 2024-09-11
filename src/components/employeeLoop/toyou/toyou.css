@@ -1,0 +1,268 @@
+.fade-text {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    /* ทำให้เกิดการเปลี่ยนแปลงค่อยๆ */
+}
+
+.fade-in {
+    opacity: 1;
+    /* ทำให้ข้อความค่อยๆ ขึ้น */
+}
+
+.fade-out {
+    opacity: 0;
+    /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
+}
+
+
+
+.container-toyou {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-position: center center;
+    background-size: auto 100vh;
+    /* ให้ภาพพอดีกับคอนเทนเนอร์ */
+    background-repeat: no-repeat;
+    /* ป้องกันไม่ให้ภาพซ้ำ */
+    background-position: center;
+    /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
+    transition: background-image 2s ease-in-out;
+    /* การเปลี่ยนแปลงภาพพื้นหลัง */
+    position: relative;
+}
+
+.toyou-detail {
+    position: relative;
+    height: 100vh;
+    /* width: 80%; */
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    padding-top: 4rem;
+    /* border: 1px solid red; */
+}
+
+.toyou-detail span {
+    font-size: 14px;
+    margin-top: 2rem;
+}
+
+.detail-text {
+    /* background-color: rgba(179, 179, 179, 0.452); */
+    /* border: 1px solid rgb(35, 129, 245); */
+    width: 80vw;
+    border-radius: 25px;
+}
+
+.btn-toyou {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+#toyou-p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: rgb(202, 229, 255);
+}
+
+
+.container-toyou {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-size: auto 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .toyou-detail {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    max-width: 80%;
+    margin: auto;
+  }
+  
+  .fade-intoyou {
+    opacity: 0;
+    transition: opacity 6s ease-in;
+    animation: fadeIn 6s forwards;
+  }
+  
+  @keyframes fade-intoyou {
+    to {
+      opacity: 1;
+    }
+  }
+  
+
+  .btn-toyou-thankyou button {
+    padding: 5px 10px;
+    border: 2px solid #e1e1e1;
+    background-color: #66adff4a;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-toyou-thankyou button:hover {
+    background-color: #cacaca81; /* สีพื้นหลังเมื่อ hover */
+    color: #ffffff; /* สีตัวอักษรเมื่อ hover */
+  }
+
+
+  .btn-toyou-thankyou {
+    /* padding: 10px 20px;
+    font-size: 16px; */
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .floating-message {
+    position: absolute;
+    bottom: 40px; /* เริ่มต้นตำแหน่งใกล้ปุ่ม */
+    font-size: 15px;
+    color: #ffffff;
+    opacity: 1;
+    animation: floatUp 14s ease-out forwards; /* สร้างเอฟเฟกต์การลอยขึ้น */
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1000px); /* ระยะที่ข้อความจะลอยขึ้นไป */
+      opacity: 0;
+    }
+  }
+
+
+  .btn-aboutme {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1.2rem;
+  }
+  .btn-aboutme button {
+    background: #66adff4a;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+  }
+  .btn-aboutme2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.2rem;
+  }
+  .btn-aboutme2 button {
+    background: #66adff4a;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+  }
+
+
+.profile-card {
+  /* border: 1px solid red; */
+  height: 100vh;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.473);
+  border-radius: 50% 80%;
+  margin-bottom: 4rem;
+}
+.contantflex {
+  display: flex;
+  flex-direction: column;
+}
+.contantflex a {
+  cursor: pointer;
+  margin-top: 5px;
+}
+.about-profile {
+  padding: 0 2rem;
+}
+
+
+
+
+/* pop up  */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* ทำให้ background มืดลง */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: white;
+}
+
+.popup-content {
+  background: #65baffe4; /* สีพื้นหลังของป๊อปอัพ */
+  padding: 20px;
+  border-radius: 100% 60%;
+  position: relative;
+  width: 300px;
+  text-align: center;
+}
+
+.qr-container img {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.copy-notice {
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+  margin-top: 5px;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+}
+.copyable {
+  display: flex;
+  position: relative;
+}
+.copyable img {
+  width: 20px;
+  cursor: pointer;
+  margin-left: 4px;
+}

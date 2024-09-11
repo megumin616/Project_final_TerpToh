@@ -1,0 +1,15 @@
+.fade-text {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+    /* ทำให้เกิดการเปลี่ยนแปลงค่อยๆ */
+}
+
+.fade-in {
+    opacity: 1;
+    /* ทำให้ข้อความค่อยๆ ขึ้น */
+}
+
+.fade-out {
+    opacity: 0;
+    /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
+}

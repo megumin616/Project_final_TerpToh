@@ -1,0 +1,111 @@
+/* Chapter4.css */
+.fade-text {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* ทำให้เกิดการเปลี่ยนแปลงค่อยๆ */
+  }
+  .fade-in {
+    opacity: 1; /* ทำให้ข้อความค่อยๆ ขึ้น */
+  }
+  .fade-out {
+    opacity: 0; /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
+  }
+  
+  .container-chapter4 {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-size: contain; /* ให้ภาพพอดีกับคอนเทนเนอร์ */
+    background-repeat: no-repeat; /* ป้องกันไม่ให้ภาพซ้ำ */
+    background-position: center; /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
+    transition: background-image 2s ease-in-out; /* การเปลี่ยนแปลงภาพพื้นหลัง */
+  }
+  .chapter4-detail {
+    position: relative;
+    height: 100vh;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .detail-text {
+    width: 80vw;
+    border-radius: 25px;
+  }
+  .btn-chapter4 {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+  }
+
+  .question-chapter4 {
+    text-align: center;
+    padding: 35px;
+  }
+  
+  .btn-qsk {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+  .btn-qsk button {
+    padding: 5px 10px;
+    border: 2px solid #333;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-qsk button:hover {
+    background-color: #333; /* สีพื้นหลังเมื่อ hover */
+    color: #fff; /* สีตัวอักษรเมื่อ hover */
+  }
+
+  .answer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    /* border: 1px solid blue; */
+  }
+  .answer-detail {
+    /* border: 1px solid red; */
+    padding-top: 10rem;
+    width: 80vw;
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* เพิ่ม transition สำหรับการเปลี่ยนความโปร่งใส */
+  }
+  .fade-in {
+    opacity: 1;
+  }
+
+  /* styles.css */
+  .message-detail {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transition สำหรับการเปลี่ยนความโปร่งใส */
+  }
+  .message-detail.fade-in {
+    opacity: 1;
+  }
+  
+  .fade-content {
+    opacity: 1; /* เริ่มต้นที่มองไม่เห็น */
+    transition: opacity 2s ease-in-out; /* เพิ่มการเคลื่อนไหวแบบ fade-in ใช้เวลา 2 วินาที */
+  }
+  
+  .fade-content.show {
+    opacity: 1; /* สถานะที่ทำให้เนื้อหาปรากฏ */
+  }
+  
+
+
+  
+
+  

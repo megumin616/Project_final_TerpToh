@@ -1,0 +1,94 @@
+.fade-text {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    /* ทำให้เกิดการเปลี่ยนแปลงค่อยๆ */
+}
+
+.fade-in {
+    opacity: 1;
+    /* ทำให้ข้อความค่อยๆ ขึ้น */
+}
+
+.fade-out {
+    opacity: 0;
+    /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
+}
+
+.fade-in-line {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.container-chapter5 {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    /* background-image: url("../../../gifs/chapter5-work.gif"); */
+    background-size: contain;
+    /* ให้ภาพพอดีกับคอนเทนเนอร์ */
+    background-repeat: no-repeat;
+    /* ป้องกันไม่ให้ภาพซ้ำ */
+    background-position: center;
+    /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
+    transition: background-image 2s ease-in-out;
+    /* การเปลี่ยนแปลงภาพพื้นหลัง */
+}
+
+.chapter5-detail {
+    position: relative;
+    height: 100vh;
+    /* width: 80%; */
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+
+.detail-text {
+    /* background-color: rgba(179, 179, 179, 0.452); */
+    /* border: 1px solid rgb(35, 129, 245); */
+    width: 80vw;
+    border-radius: 25px;
+}
+
+.btn-chapter5 {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+
+.show-buttonask {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-buttonask button {
+    padding: 5px 10px;
+    border: 2px solid #333;
+    background-color: #ffffffa0;
+    color: #333;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .show-buttonask button:hover {
+    background-color: #333; /* สีพื้นหลังเมื่อ hover */
+    color: #fff; /* สีตัวอักษรเมื่อ hover */
+  }

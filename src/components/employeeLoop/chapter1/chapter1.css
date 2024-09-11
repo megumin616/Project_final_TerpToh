@@ -1,0 +1,59 @@
+/* Chapter1.css */
+.fade-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  /* ทำให้เกิดการเปลี่ยนแปลงค่อยๆ */
+}
+
+.fade-in {
+  opacity: 1;
+  /* ทำให้ข้อความค่อยๆ ขึ้น */
+}
+
+.fade-out {
+  opacity: 0;
+  /* ซ่อนข้อความก่อนเปลี่ยนบรรทัด */
+}
+
+
+
+.container-chapter1 {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  /* background-image: url("../../../gifs/chapter1-work.gif"); */
+  background-size: contain;
+  /* ให้ภาพพอดีกับคอนเทนเนอร์ */
+  background-repeat: no-repeat;
+  /* ป้องกันไม่ให้ภาพซ้ำ */
+  background-position: center;
+  /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
+  transition: background-image 2s ease-in-out;
+  /* การเปลี่ยนแปลงภาพพื้นหลัง */
+}
+
+.chapter1-detail {
+  position: relative;
+  height: 100vh;
+  /* width: 80%; */
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+
+.detail-text {
+  /* background-color: rgba(179, 179, 179, 0.452); */
+  /* border: 1px solid rgb(35, 129, 245); */
+  width: 80vw;
+  border-radius: 25px;
+}
+
+.btn-chapter1 {
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+}
