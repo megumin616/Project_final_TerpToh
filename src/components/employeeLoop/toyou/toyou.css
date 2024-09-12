@@ -162,6 +162,21 @@
     }
   }
 
+  .btn-books {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.2rem;
+  }
+
+  .btn-books button {
+    background: #66adff4a;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+  }
+
 
   .btn-aboutme {
     position: absolute;
@@ -190,6 +205,42 @@
     font-size: 15px;
   }
 
+
+
+.books-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.473);
+  border-radius: 80% 50%;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.books-card p {
+  max-width: 50%;
+}
+.books-card img {
+  margin-top: 1rem;
+}
+.btn-book-card {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+}
+.btn-book-card button {
+  width: 5rem;
+  height: 2rem;
+  margin: 0 2rem;
+  background: #51a2ffdc;
+  padding: 3px;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+}
 
 .profile-card {
   /* border: 1px solid red; */

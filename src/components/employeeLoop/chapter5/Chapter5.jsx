@@ -4,17 +4,14 @@ import { DataContext } from "../../../App";
 import background from "../../../gifs/BG.gif";
 
 //books
-import booktest from "../../../images/book_test.jpg";
-import bookSet1_1 from "../../../images/setBook1_1.jpg";
-import bookSet1_2 from "../../../images/setBook1_2.jpg";
-import bookSet1_3 from "../../../images/setBook1_3.jpg";
-import bookSet2 from "../../../images/setBook2.jpg";
 import { useNavigate } from "react-router-dom";
+import useBook from "./books";
 
 export default function Chapter5() {
   const { userName } = useContext(DataContext);
   const navigate = useNavigate();
 
+  const {books1, books2} = useBook();
 
   const bg = background;
 
@@ -37,63 +34,7 @@ export default function Chapter5() {
 
   const [displayChangeNextBook, setDisplayChangeNextBook] = useState(false); 
 
-  const books1 = [
-    {
-      nameBook: "The Alchemist",
-      author: "Paulo Coelho",
-      detailBook: `เล่มนี้เป็นเรื่องราวของการตามหาความฝันและความหมายของชีวิต โดยผู้เขียนเล่าเรื่องของซานติอาโก 
-      คนเลี้ยงแกะที่ออกเดินทางค้นหาสมบัติในดินแดนที่ห่างไกล หนังสือเล่มนี้เหมาะสำหรับ${userName} 
-      เพราะเน้นย้ำถึงการเชื่อในความฝันของตนเองและการยืนหยัดต่อสู้แม้เส้นทางจะยากลำบาก`,
-      imgBook: bookSet1_1,
-    },
-    {
-      nameBook: "Atomic Habits",
-      author: "James Clear",
-      detailBook: `หนังสือเล่มนี้อธิบายถึงวิธีการเปลี่ยนนิสัยเล็ก ๆ เพื่อสร้างความสำเร็จใหญ่ 
-      เน้นที่การปรับปรุงทีละเล็กทีละน้อยที่สามารถนำไปสู่การเปลี่ยนแปลงที่ยิ่งใหญ่ 
-      เล่มนี้จะช่วยให้${userName}มองเห็นวิธีการปรับเปลี่ยนและพัฒนาตนเองในระยะยาว 
-      ซึ่งจะเป็นประโยชน์ในการทำตามความฝันของ${userName}เอง`,
-      imgBook: bookSet1_2,
-    },
-    {
-      nameBook: "Man's Search for Meaning",
-      author: "Viktor E. Frankl",
-      detailBook: `เล่มนี้เป็นผลงานที่มีความลึกซึ้งและทรงพลัง 
-      เนื้อหาเกี่ยวกับประสบการณ์ของผู้เขียนที่รอดชีวิตจากค่ายกักกันในช่วงสงครามโลกครั้งที่ 2 
-      และความคิดเกี่ยวกับการค้นหาความหมายของชีวิต ${userName}จะได้รับแรงบันดาลใจในการต่อสู้กับอุปสรรค
-      และค้นหาความหมายของความฝันที่${userName}เชื่อมั่น`,
-      imgBook: bookSet1_3,
-    },
-  ];
-  const books2 = [
-    {
-      nameBook: "สัญญานะว่าจะยิ้มให้กับตัวเอง",
-      author: "Whenimfeeeling",
-      detailBook: `สำหรับ${userName}หนังสือเล่มนี้น่าจะเป็นประโยชน์อย่างยิ่ง 
-      เพราะเป็นหนังสือที่เหมาะกับคนที่กำลังอยู่ในช่วงเวลาแห่งการคิดทบทวนตัวเองที่กำลังรู้สึกไม่พร้อมที่จะเริ่มต้นใหม่ 
-      หรือกำลังหาวิธีในการเสริมสร้างพลังใจให้สามารถก้าวข้ามอุปสรรคต่าง ๆ ไปได้ 
-      โดยไม่ต้องเร่งรีบในการตัดสินใจหรือเปลี่ยนแปลงชีวิต หนังสือเล่มนี้อาจช่วยให้${userName}รู้สึกมั่นใจมากขึ้น
-      ในการเผชิญกับความท้าทายในชีวิตและหันมามองตัวเองในแง่ที่ดียิ่งขึ้น`,
-      imgBook: bookSet2,
-    },
-    {
-      nameBook: "Atomic Habits",
-      author: "James Clear",
-      detailBook: `เล่มนี้เหมาะกับคนที่ต้องการปรับเปลี่ยนพฤติกรรมหรือพัฒนานิสัยใหม่ 
-      แต่ยังไม่พร้อมสำหรับการเปลี่ยนแปลงที่ใหญ่โต "Atomic Habits" 
-      ให้คำแนะนำและวิธีการเล็กๆ น้อยๆ ที่สามารถนำไปสู่การเปลี่ยนแปลงที่มีผลในระยะยาว 
-      หนังสือเล่มนี้อาจช่วยให้${userName}สร้างพื้นฐานเล็กๆ 
-      เพื่อเตรียมตัวสำหรับการก้าวเดินไปข้างหน้าเมื่อคุณพร้อม`,
-      imgBook: bookSet1_2,
-    },
-    {
-      nameBook: "Man's Search for Meaning",
-      author: "Viktor E. Frankl",
-      detailBook: `หนังสือเล่มนี้อธิบายถึงประสบการณ์ที่ผู้เขียนได้ผ่านการอยู่ในค่ายกักกันนาซีและการค้นหาความหมายในชีวิต 
-      แม้ว่าจะอยู่ในสถานการณ์ที่ยากลำบาก หนังสือเล่มนี้อาจช่วยให้${userName}ได้พิจารณาและหาความหมายหรือวัตถุประสงค์ในชีวิตของคุณเอง`,
-      imgBook: bookSet1_3,
-    },
-  ];
+  
 
   // ฟังก์ชันเพื่อเปลี่ยนไปยังหนังสือถัดไป
   const nextBook = () => {
