@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import './chapterend.css'
-import background1 from '../../../gifs/chapter3.1-work.gif'
-import backgroundEnd from '../../../gifs/chapterEnd.gif'
-import { DataContext } from '../../../App'
-import { useNavigate } from 'react-router-dom'
-import { useAudio } from '../../audio/Audio'
+import React, { useContext, useEffect, useState } from "react";
+import "./chapterend.css";
+import background1 from "../../../gifs/chapter3.1-work.gif";
+import backgroundEnd from "../../../gifs/chapterEnd.gif";
+import { DataContext } from "../../../App";
+import { useNavigate } from "react-router-dom";
+import { useAudio } from "../../audio/Audio";
 
 export default function ChapterEnd() {
-  const {togglePlay1} = useAudio();
-  const {userName} = useContext(DataContext);
+  const { togglePlay1 } = useAudio();
+  const { userName } = useContext(DataContext);
   const navigate = useNavigate();
 
   const bg1 = background1;
@@ -22,16 +22,14 @@ export default function ChapterEnd() {
   const [buttonShow, setButtonShow] = useState(false); // แสดงปุ่มเมื่อแสดงข้อความหมด
   const [textDisplay, setTextDisplay] = useState("");
 
-
   const content = [
     `ในที่สุด${userName}ก็กลับไปยังสถานที่ที่เขาพบกับชายชราอีกครั้ง 
     พร้อมกับเรื่องราวต่างๆในชีวิตที่${userName}ได้วาดฝัน 
     ${userName}ได้เล่าเรื่องนั้นให้ชายชราเป็นการขอบคุณและเล่าเรื่องราวการเดินทางที่ผ่านมามากมายให้ชายชราฟัง `,
-    'ทั้งสองคนต่างยิ้มให้กันและรู้สึกถึงความอบอุ่นในใจ',
-    `การเดินตามความฝันไม่ใช่แค่การก้าวข้ามอุปสรรคในชีวิต แต่ยังเป็นการสร้างเส้นทางใหม่ให้กับผู้ที่มีความหวัง ทุกๆ ก้าวที่คุณเดินไป 
-    ทำให้คุณแข็งแกร่งขึ้นและกลายเป็นแรงบันดาลใจให้กับผู้คนรอบข้าง อย่าหยุด สู้ต่อไป!`,
-  ]
-
+    "ทั้งสองคนต่างยิ้มให้กันและรู้สึกถึงความอบอุ่นในใจ",
+    `"การเดินตามความฝันไม่ใช่แค่การก้าวข้ามอุปสรรคในชีวิต แต่ยังเป็นการสร้างเส้นทางใหม่ให้กับผู้ที่มีความหวัง ทุกๆ ก้าวที่คุณเดินไป 
+    ทำให้คุณแข็งแกร่งขึ้นและกลายเป็นแรงบันดาลใจให้กับผู้คนรอบข้าง อย่าหยุด สู้ต่อไป!"`,
+  ];
 
   useEffect(() => {
     const headerTimer = setTimeout(() => {
@@ -60,6 +58,20 @@ export default function ChapterEnd() {
     }
   }, [showHeader, currentLine]); // ทำงานเมื่อ showHeader เปลี่ยนแปลง
 
+  useEffect(() => {
+    if (currentLine === 1) {
+      // เมื่อถึงบรรทัดที่ 3 (index 2)
+      setBackgroundImage(`url(${bg2})`); // เปลี่ยน backgroundImage
+    }
+  }, [currentLine]);
+
+  // ตรวจสอบว่าถึงบรรทัดสุดท้ายแล้ว
+  useEffect(() => {
+    if (currentLine === content.length - 1) {
+      setButtonShow(true); // เรียกใช้ฟังก์ชันที่ต้องการ
+    }
+  }, [currentLine]); // ทำงานเมื่อ currentLine เปลี่ยนแปลง
+
   const handleNextLine = () => {
     if (currentLine < content.length - 1) {
       setIsFading(false); // ซ่อนข้อความก่อนเปลี่ยนบรรทัด
@@ -70,23 +82,10 @@ export default function ChapterEnd() {
     }
   };
 
-  useEffect(() => {
-    if (currentLine === 1) { // เมื่อถึงบรรทัดที่ 3 (index 2)
-      setBackgroundImage(`url(${bg2})`); // เปลี่ยน backgroundImage
-    }
-  }, [currentLine]);
-
-  // ตรวจสอบว่าถึงบรรทัดสุดท้ายแล้ว
-  useEffect(() => {
-    if (currentLine === content.length - 1) { 
-      setButtonShow(true);; // เรียกใช้ฟังก์ชันที่ต้องการ
-    }
-  }, [currentLine]); // ทำงานเมื่อ currentLine เปลี่ยนแปลง
-
   const handleNext = () => {
     togglePlay1();
-    navigate('/toyou');
-  }
+    navigate("/toyou");
+  };
 
   return (
     <div
@@ -97,16 +96,31 @@ export default function ChapterEnd() {
         <div className="detail-text">
           {showHeader && <h3>บทส่งท้าย การกลับมาสู่ตัวเอง</h3>}
 
-          <p style={{display: textDisplay}} className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p
+            style={{ display: textDisplay }}
+            className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}
+          >
             {content[currentLine]}
           </p>
 
           {isNextEnabled && currentLine < content.length - 1 && (
-            <button className="btn-chapterend" onClick={handleNextLine}>ถัดไป</button>
+            <button className="btn-chapterend" onClick={handleNextLine}>
+              ถัดไป
+            </button>
           )}
-          {buttonShow ? <button style={{color: 'rgb(35, 129, 245)'}} onClick={handleNext} className="btn-chapterend">ถึงคุณ</button> : ""}
+          {buttonShow ? (
+            <button
+              style={{ color: "rgb(35, 129, 245)" }}
+              onClick={handleNext}
+              className="btn-chapterend"
+            >
+              ถึงคุณ
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }

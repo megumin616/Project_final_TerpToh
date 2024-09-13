@@ -1,7 +1,13 @@
 // AudioContext.js
-import React, { createContext, useState, useRef, useContext, useEffect } from 'react';
-import sound1 from '../../sound/nutsume.mp3'; // เพลงที่ 1
-import sound2 from '../../sound/uchiage.mp3'; // เพลงที่ 2
+import React, {
+  createContext,
+  useState,
+  useRef,
+  useContext,
+  useEffect,
+} from "react";
+import sound1 from "../../sound/nutsume.mp3"; // เพลงที่ 1
+import sound2 from "../../sound/uchiage.mp3"; // เพลงที่ 2
 
 const AudioContext = createContext();
 
@@ -17,10 +23,12 @@ export const AudioProvider = ({ children }) => {
   // ฟังก์ชันควบคุมการเล่นเพลงที่ 1
   const togglePlay1 = () => {
     if (audioRef1.current) {
+      //ตรวจสอบว่า audioRef1.current มีค่าไม่เป็น null หรือไม่ ซึ่งเป็นการตรวจสอบว่าองค์ประกอบ <audio> สำหรับเพลงที่ 1 ได้ถูกเรนเดอร์มาแล้วและสามารถเข้าถึงได้หรือไม่
       if (isPlaying1) {
-        audioRef1.current.pause();
+        //ถ้า isPlaying1 เป็น true (หมายความว่าเพลงที่ 1 กำลังเล่นอยู่)
+        audioRef1.current.pause(); //หยุดการเล่นเพลงที่ 1
       } else {
-        audioRef1.current.play();
+        audioRef1.current.play(); //เริ่มเล่นเพลงที่ 1
         if (isPlaying2) {
           togglePlay2(); // หยุดเพลงที่ 2 ถ้ามีการเล่นอยู่
         }
@@ -70,7 +78,9 @@ export const AudioProvider = ({ children }) => {
   }, []);
 
   return (
-    <AudioContext.Provider value={{ isPlaying1, togglePlay1, isPlaying2, togglePlay2 }}>
+    <AudioContext.Provider
+      value={{ isPlaying1, togglePlay1, isPlaying2, togglePlay2 }}
+    >
       <audio
         ref={audioRef1}
         src={sound1}

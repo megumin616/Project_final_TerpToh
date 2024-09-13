@@ -12,6 +12,7 @@ import Chapter6 from "./components/employeeLoop/chapter6/Chapter6";
 import ChapterEnd from "./components/employeeLoop/chapterEnd/ChapterEnd";
 import Toyou from "./components/employeeLoop/toyou/toyou";
 import { AudioProvider } from "./components/audio/Audio";
+import Student1 from "./components/studentLoop/chapter1/Student1";
 
 export const DataContext = createContext();
 
@@ -106,6 +107,8 @@ function App() {
             <Route path="/chapter6" element={<Chapter6 />} />
             <Route path="/chapterend" element={<ChapterEnd />} />
             <Route path="/toyou" element={<Toyou />} />
+
+            <Route path="/student1" element={<Student1 />} />
           </Routes>
         </AudioProvider>
       </DataContext.Provider>

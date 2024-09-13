@@ -9,9 +9,11 @@ import useBook from "./books";
 
 export default function Chapter5() {
   const { userName } = useContext(DataContext);
+  const selectedOption = localStorage.getItem('selectedOption'); // สถานะแสดงว่าเป็น Loop ไหน
+
   const navigate = useNavigate();
 
-  const {books1, books2} = useBook();
+  const { books1, books2 } = useBook();
 
   const bg = background;
 
@@ -31,23 +33,43 @@ export default function Chapter5() {
   // สร้าง state เพื่อเก็บ index ของหนังสือที่จะแสดง
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showBook, setShowBook] = useState(false); // แสดง div แนะนำหนังสือ
-
-  const [displayChangeNextBook, setDisplayChangeNextBook] = useState(false); 
-
-  
+  const [displayChangeNextBook, setDisplayChangeNextBook] = useState(false);
 
   // ฟังก์ชันเพื่อเปลี่ยนไปยังหนังสือถัดไป
   const nextBook = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % books1.length);
   };
 
+  const answer = (value) => {
+    setshowButtonNextBook(false);
+    let newContent = [];
+    if (value === 1) {
+      newContent = [
+        `การที่${userName}ตัดสินใจให้โอกาสตัวเองเสมอแบบนั้นเป็นสิ่งที่น่าชื่นชมมาก`,
+        `ผมเชื่อว่าแม้เส้นทางจะยากลำบาก แต่การที่${userName}ไม่ยอมแพ้และยังคงเดินตามความฝันนั้น`,
+        `จะทำให้ชีวิตของ${userName}มีความหมายมากยิ่งขึ้นอย่างแน่นอน`,
+      ];
+      setBooksAll(books1); //set เนื้อหาที่จะแนะนำหนังสือว่าจะเป็นอันไหน
+    } else if (value === 2) {
+      newContent = [
+        `ผมเข้าใจนะว่าการตัดสินใจที่จะเริ่มต้นใหม่มันไม่ใช่เรื่องง่าย`,
+        `และบางครั้งก็ต้องใช้เวลามากกว่าที่เราคิดไว้ ${userName}ไม่ต้องรีบร้อนหรอกนะ`,
+        `ค่อยๆ ให้เวลากับตัวเอง คิดและรู้สึกกับสิ่งที่เกิดขึ้น หากวันหนึ่ง${userName}พร้อมที่จะเปิดโอกาสให้กับตัวเอง`,
+        `ผมเชื่อว่า${userName}จะสามารถก้าวผ่านทุกอย่างไปได้อย่างแข็งแกร่ง แล้วผมจะอยู่ข้างๆ ${userName}เสมอในทุกก้าวที่${userName}เลือกเดินไป`,
+      ];
+      setBooksAll(books2); //set เนื้อหาที่จะแนะนำหนังสือว่าจะเป็นอันไหน
+    }
+    setContent(newContent);
+    setDisplayText("none");
+    setCurrentLineIndex(0); // รีเซ็ต index ของบรรทัดเริ่มต้น
+  };
+
   useEffect(() => {
-    if(currentIndex === 2) {
+    if (currentIndex === 2) {
       setDisplayChangeNextBook(true);
       setShowButtonnextChapter(true);
     }
-  }, [currentIndex])
-  
+  }, [currentIndex]);
 
   useEffect(() => {
     const headerTimer = setTimeout(() => {
@@ -85,30 +107,7 @@ export default function Chapter5() {
     }
   }, [content, currentLineIndex]);
 
-  const answer = (value) => {
-    setshowButtonNextBook(false);
-    let newContent = [];
-    if (value === 1) {
-      newContent = [
-        `การที่${userName}ตัดสินใจให้โอกาสตัวเองเสมอแบบนั้นเป็นสิ่งที่น่าชื่นชมมาก`,
-        `ผมเชื่อว่าแม้เส้นทางจะยากลำบาก แต่การที่${userName}ไม่ยอมแพ้และยังคงเดินตามความฝันนั้น`,
-        `จะทำให้ชีวิตของ${userName}มีความหมายมากยิ่งขึ้นอย่างแน่นอน`,
-      ];
-      setBooksAll(books1); //set เนื้อหาที่จะแนะนำหนังสือว่าจะเป็นอันไหน
-    } else if (value === 2) {
-      newContent = [
-        `ผมเข้าใจนะว่าการตัดสินใจที่จะเริ่มต้นใหม่มันไม่ใช่เรื่องง่าย`,
-        `และบางครั้งก็ต้องใช้เวลามากกว่าที่เราคิดไว้ ${userName}ไม่ต้องรีบร้อนหรอกนะ`,
-        `ค่อยๆ ให้เวลากับตัวเอง คิดและรู้สึกกับสิ่งที่เกิดขึ้น หากวันหนึ่ง${userName}พร้อมที่จะเปิดโอกาสให้กับตัวเอง`,
-        `ผมเชื่อว่า${userName}จะสามารถก้าวผ่านทุกอย่างไปได้อย่างแข็งแกร่ง แล้วผมจะอยู่ข้างๆ ${userName}เสมอในทุกก้าวที่${userName}เลือกเดินไป`,
-      ];
-      setBooksAll(books2); //set เนื้อหาที่จะแนะนำหนังสือว่าจะเป็นอันไหน
-    }
-    setContent(newContent);
-    setDisplayText("none");
-    setCurrentLineIndex(0); // รีเซ็ต index ของบรรทัดเริ่มต้น
-  };
-
+  // แสดงปุ่มหลังจากใช้ answer() ไปหลัง 4 วิ
   useEffect(() => {
     if (answer) {
       const timer = setTimeout(() => {
@@ -118,19 +117,17 @@ export default function Chapter5() {
     }
   }, [answer]);
 
+
   //show books
   const handleShowBook = () => {
     setNoneDisplay("none");
     setShowBook(true);
-
-    // #ทำถึงตรงนี้  ต่อไปก็ทำการแยกหนังสือที่จะแนะนำจากการเลือกคำตอบก่อนหน้า แล้วสร้าง state เก็บรูปกับรายละเอียดไว้ เพื่อที่จะเอามา
-    // แสดงจากที่ได้เลือกไว้ แนะนำ 3 เล่ม และเกริ่นว่า "หนังสือ 3 เล่มที่เหมาะกับคุณในตอนนี้"
   };
 
   //ไปยังบทต่อไป
   const handleNextPage = () => {
     navigate("/chapter6");
-  }
+  };
 
   return (
     <div
@@ -143,7 +140,7 @@ export default function Chapter5() {
 
           <p className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
             หลังจากที่ {userName}{" "}
-            ได้ไตร่ตรองความรู้สึกของตนเองเกี่ยวกับงานและชีวิตที่เป็นอยู่แล้ว
+            ได้ไตร่ตรองความรู้สึกของตนเองเกี่ยวกับ{selectedOption === "วัยทำงาน" ? "งาน" : "การเรียน"}และชีวิตที่เป็นอยู่แล้ว
             <br />
             คุณจะเปิดรับโอกาสให้ตัวเอง ในการตามความฝันอีกครั้งไหม?
           </p>
@@ -177,21 +174,33 @@ export default function Chapter5() {
           </div>
         )}
 
+        {/* ส่วนแนะนำหนังสือ */}
         {showBook && (
-          <div
-            className="detail-text"
-          >
-            <h5 style={{color: 'gray'}}>หนังสือ 3 เล่มที่ฉันอย่างแนะนำกันคุณ</h5>
+          <div className="detail-text">
+            <h5 style={{ color: "gray" }}>
+              หนังสือ 3 เล่มที่ฉันอย่างแนะนำกันคุณ
+            </h5>
             <h3>{booksAll[currentIndex].nameBook}</h3>
             <p>{booksAll[currentIndex].author}</p>
             <img
               src={booksAll[currentIndex].imgBook}
               alt={booksAll[currentIndex].nameBook}
               height={200}
-              />
-              <p>{booksAll[currentIndex].detailBook}</p>
-            <button onClick={nextBook}>{displayChangeNextBook ? "ดูอีกรอบ" : "หนังสือถัดไป"}</button>
-            {showButtonNextChapter ? (<button style={{marginLeft: '2rem', color: 'rgb(35, 129, 245)'}} onClick={handleNextPage}>ถัดไป</button>) : ""}
+            />
+            <p>{booksAll[currentIndex].detailBook}</p>
+            <button onClick={nextBook}>
+              {displayChangeNextBook ? "ดูอีกรอบ" : "หนังสือถัดไป"}
+            </button>
+            {showButtonNextChapter ? (
+              <button
+                style={{ marginLeft: "2rem", color: "rgb(35, 129, 245)" }}
+                onClick={handleNextPage}
+              >
+                ถัดไป
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>

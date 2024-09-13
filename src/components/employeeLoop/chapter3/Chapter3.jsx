@@ -31,7 +31,7 @@ export default function Chapter3() {
     `ชายชรายิ้มและบอกว่า 'ความสุขไม่ได้มาจากการที่คนอื่นยอมรับเรา แต่มาจากการที่เราได้ยอมรับตัวเอง'`,
     `คำพูดนั้นทำให้ ${userName} รู้สึกถึงความหมายลึกๆ ในการใช้ชีวิต`,
     "เขาเริ่มเข้าใจว่า บางทีเขาอาจจะต้องเริ่มทำสิ่งที่เขารักแทนที่จะทำสิ่งที่คนอื่นคาดหวัง",
-    "ชายชรากล่าวว่า 'ในตอนที่ฉันยังหนุ่ม ฉันก็เคยกลัวการตามหาความฝัน'",
+    "ชายชรากล่าวอีกว่า 'ในตอนที่ฉันยังหนุ่ม ฉันก็เคยกลัวการตามหาความฝัน'",
     "แต่เมื่อฉันเริ่มยอมรับตัวเอง ชีวิตก็เริ่มเปลี่ยนไปในทางที่ดีขึ้นอย่างไม่น่าเชื่อ'",
   ];
 
@@ -73,6 +73,20 @@ export default function Chapter3() {
     }
   }, [showHeader, currentLine]); // ทำงานเมื่อ showHeader เปลี่ยนแปลง
 
+  useEffect(() => {
+    if (currentLine === 2) {
+      // เมื่อถึงบรรทัดที่ 3 (index 2)
+      setBackgroundImage(`url(${bg2})`); // เปลี่ยน backgroundImage
+    }
+  }, [currentLine]);
+
+  useEffect(() => {
+    if (currentLine === content.length - 1) {
+      // ตรวจสอบว่าถึงบรรทัดสุดท้ายแล้ว
+      handleDreams(); // เรียกใช้ฟังก์ชันที่ต้องการ
+    }
+  }, [currentLine]); // ทำงานเมื่อ currentLine เปลี่ยนแปลง
+
   // ฟังก์ชันสำหรับเปลี่ยนบรรทัด
   const handleNextLine = () => {
     if (currentLine < content.length - 1) {
@@ -83,13 +97,6 @@ export default function Chapter3() {
       }, 500); // รอเวลาให้การ fade-out เสร็จ (0.5 วินาที)
     }
   };
-
-  useEffect(() => {
-    if (currentLine === 2) {
-      // เมื่อถึงบรรทัดที่ 3 (index 2)
-      setBackgroundImage(`url(${bg2})`); // เปลี่ยน backgroundImage
-    }
-  }, [currentLine]);
 
   const handleDreams = () => {
     setButtonShow(true);
@@ -102,13 +109,6 @@ export default function Chapter3() {
     setButtonShow(false);
   };
 
-  useEffect(() => {
-    if (currentLine === content.length - 1) {
-      // ตรวจสอบว่าถึงบรรทัดสุดท้ายแล้ว
-      handleDreams(); // เรียกใช้ฟังก์ชันที่ต้องการ
-    }
-  }, [currentLine]); // ทำงานเมื่อ currentLine เปลี่ยนแปลง
-
   const handleNext = () => {
     navigate("/chapter4");
   };
@@ -120,7 +120,9 @@ export default function Chapter3() {
     >
       <div className="chapter3-detail">
         <div className="detail-text">
-          {showHeader && <h3 id='detail-h3-chapter3'>บทที่ 3 แรงบันดาลใจจากการพบเจอ</h3>}
+          {showHeader && (
+            <h3 id="detail-h3-chapter3">บทที่ 3 แรงบันดาลใจจากการพบเจอ</h3>
+          )}
 
           <p
             id="detail-p-chapter3"
@@ -144,7 +146,7 @@ export default function Chapter3() {
           )}
           {showInput ? (
             <div>
-              <p id='detail-h3-chapter3'>รักษามันไว้นะ ความฝันของคุณหน่ะ!</p>
+              <p id="detail-h3-chapter3">รักษามันไว้นะ ความฝันของคุณหน่ะ!</p>
               <button
                 style={{ color: "rgb(35, 129, 245)" }}
                 onClick={handleNext}

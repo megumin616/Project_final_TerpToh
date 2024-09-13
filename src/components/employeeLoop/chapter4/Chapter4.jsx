@@ -77,6 +77,7 @@ export default function Chapter4() {
     setShowAsk1(true);
   };
 
+  // ##เลือกคำตอบจากตัวเลือกของผู้ใช้
   const handleAnswer = (value) => {
     setFadeClass("");
     setShowAsk1(false);
@@ -149,6 +150,7 @@ export default function Chapter4() {
     navigate("/chapter5");
   };
 
+  // ในคำถามที่ 2 เมื่อผู้ใช้เลือก "ใช้เวลากับเพื่อนมาก หรือ กับแฟนมาก" จะใช้ฟังชั้นนี้
   const handleAnswer2 = () => {
     setShowAsk2(false);
     setAnswerDisplay2("block");
@@ -159,9 +161,10 @@ export default function Chapter4() {
     }, 24000);
     return () => clearTimeout(timer);
   };
+  // ในคำถามที่ 2 เมื่อผู้ใช้เลือก "ตอบอะไรก็ตาม" จะใช้ฟังชั้นนี้
   const handleAnswer2_1 = () => {
     if (people === "") {
-      setMesVal(true);
+      setMesVal(true); // ใช้กันว่า ถ้าไม่ใส่ค่าอะไรมาเลย จะขึ้นบอก
     } else {
       setMesVal(false);
       setShowAsk2(false);
@@ -182,7 +185,7 @@ export default function Chapter4() {
   //   "ฉันเชื่อว่าคุณทำได้",
   // ];
   const messages = [
-    "การที่คุณเลือกใช้เวลาร่วมกับใครบางคนมากเป็นพิเศษ" ,
+    "การที่คุณเลือกใช้เวลาร่วมกับใครบางคนมากเป็นพิเศษ",
     "แสดงถึงความสำคัญและความเชื่อมโยงที่คุณมีต่อกัน",
     "อย่าลืมว่า คุณจะกลายเป็นคนที่คุณใช้เวลาด้วยมากที่สุด",
     "เพราะพลังงานของคุณและเขาก็จะคล้ายกัน",
@@ -192,6 +195,7 @@ export default function Chapter4() {
     "ฉันเชื่อมั่นว่าคุณทำได้!",
   ];
 
+  // ##แสดงเนื้อหาแบบทีละส่วนของ messages
   useEffect(() => {
     if (messageIndex < messages.length) {
       // รีเซ็ตคลาสก่อนการแสดงข้อความใหม่
@@ -216,10 +220,6 @@ export default function Chapter4() {
       // เคลียร์ timeout เมื่อลบ component
       return () => clearTimeout(fadeTimeoutId);
     }
-    // const timer = setTimeout(() => {
-    //   setShowButtonNextAsk2(true);
-    // }, 11000);
-    // return () => clearTimeout(timer);
   }, [messageIndex]);
 
   return (
@@ -231,7 +231,10 @@ export default function Chapter4() {
         <div className="detail-text">
           {showHeader && <h3>บทที่ 4 การตัดสินใจที่ยากลำบาก</h3>}
 
-          <p id="detail-p-chapter4" className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}>
+          <p
+            id="detail-p-chapter4"
+            className={`fade-text ${isFading ? "fade-in" : "fade-out"}`}
+          >
             {content}
           </p>
           {buttonShow ? (
@@ -244,6 +247,7 @@ export default function Chapter4() {
         </div>
       </div>
 
+      {/* คำถามที่ 1 ของผู้ใช้ */}
       {showAsk1 ? (
         <div className="question-chapter4">
           <p>ฉันสนุกกับการใช้เวลาในช่วงที่ผ่านมานี้ไหม?</p>
@@ -257,6 +261,7 @@ export default function Chapter4() {
         ""
       )}
 
+      {/* คำตอบของผู้ใช้ ในคำถามที่ 1 */}
       {selectedAnswer && (
         <div className="answer-container" style={{ display: answerDisplay1 }}>
           <p
@@ -271,9 +276,13 @@ export default function Chapter4() {
         </div>
       )}
 
+      {/* คำถามที่ 2 ของผู้ใช้ */}
       {showAsk2 ? (
         <div className="question-chapter4">
-          <p>นอกจากครอบครัวและตัวฉันเองแล้ว ฉันใช้เวลาร่วมกับใครมากที่เป็นพิเศษไหม?</p>
+          <p>
+            นอกจากครอบครัวและตัวฉันเองแล้ว
+            ฉันใช้เวลาร่วมกับใครมากที่เป็นพิเศษไหม?
+          </p>
           <div className="btn-qsk">
             <button onClick={handleAnswer2}>เพื่อนของฉัน</button>
             <button onClick={handleAnswer2}>แฟนของฉัน</button>
@@ -298,13 +307,13 @@ export default function Chapter4() {
               )}
               <button onClick={handleAnswer2_1}>บันทึก</button>
             </div>
-            {/* <button onClick={() => handleAnswer(3)}>ฉันไม่รู้สึกเบื่อ</button> */}
           </div>
         </div>
       ) : (
         ""
       )}
 
+      {/* คำตอบของผู้ใช้ ในคำถามที่ 2 */}
       {selectedAnswer2 && (
         <div className="answer-container" style={{ display: answerDisplay2 }}>
           <p
@@ -319,6 +328,7 @@ export default function Chapter4() {
         </div>
       )}
 
+      {/* คำถามที่ 3 ของผู้ใช้ */}
       {showAsk3 ? (
         <div className="question-chapter4" style={{ display: answerDisplay3 }}>
           <p>สุดท้ายนี้ ความกลัวที่ขัดขวางฉันไม่ให้ก้าวหน้า คืออะไร?</p>
@@ -348,14 +358,16 @@ export default function Chapter4() {
         ""
       )}
 
+      {/* คำตอบของผู้ใช้ ในคำถามที่ 3 */}
       {contentAsk3 ? (
         <div className="question-chapter4">
           <p className={`fade-content`}>
-          ความกลัวเป็นสิ่งที่เกิดขึ้นกับทุกคน
+            ความกลัวเป็นสิ่งที่เกิดขึ้นกับทุกคน
             <br /> มันเป็นสัญญาณว่าเรากำลังเผชิญกับสิ่งที่ไม่เคยเจอมาก่อน
-            <br /> ซึ่งเป็นส่วนหนึ่งของการเติบโตและการเรียนรู้ 
+            <br /> ซึ่งเป็นส่วนหนึ่งของการเติบโตและการเรียนรู้
             <br /> อย่าปล่อยให้ความกลัวนั้นหยุดคุณจากการก้าวไปข้างหน้า
-            <br /> แต่จงใช้มันเป็นแรงผลักดันในการสร้างความเปลี่ยนแปลงในชีวิตของคุณ
+            <br />{" "}
+            แต่จงใช้มันเป็นแรงผลักดันในการสร้างความเปลี่ยนแปลงในชีวิตของคุณ
             <br /> ให้คุณก้าวออกจากเขตสบายและไปยังที่ที่คุณไม่เคยไป
             <br /> เพราะบางครั้ง การก้าวผ่านความกลัวนั้นเอง
             <br /> คือการเปิดประตูสู่สิ่งที่ยิ่งใหญ่กว่าที่เราคาดคิดไว้

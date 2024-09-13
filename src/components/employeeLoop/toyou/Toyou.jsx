@@ -13,7 +13,7 @@ export default function Toyou() {
   const { togglePlay2 } = useAudio();
 
   const { recommendedBooks } = useBook();
-  const {quotes, messages} = dataToyou();
+  const { quotes, messages } = dataToyou();
 
   const [quote, setQuote] = useState("");
   const [floatingMessages, setFloatingMessages] = useState([]);
@@ -22,6 +22,7 @@ export default function Toyou() {
   const [blockDisplay2, setBlockDisplay2] = useState(false); // แสดงเนื้อหา about me
   const [booksDisplay, setBooksDisplay] = useState(false);
   const [blockDisplayBook, setBlockDisplayBook] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0); //ไว้เปลี่ยนการดุหนังสือ
 
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -31,23 +32,7 @@ export default function Toyou() {
 
   const bg = backgroundImage;
 
-  const handleClick = () => {
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    const newMessage = {
-      id: Date.now(), // ใช้ timestamp เพื่อให้ได้ id ที่ไม่ซ้ำ
-      text: randomMessage,
-    };
-
-    setFloatingMessages((prevMessages) => [...prevMessages, newMessage]);
-
-    // ให้ข้อความหายไปหลังจาก 3 วินาที
-    setTimeout(() => {
-      setFloatingMessages((prevMessages) =>
-        prevMessages.filter((message) => message.id !== newMessage.id)
-      );
-    }, 12000);
-  };
-
+  // สุ่มคำคม
   useEffect(() => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     setQuote(randomQuote);
@@ -60,6 +45,30 @@ export default function Toyou() {
     }, 2000);
     return () => clearTimeout(timers);
   }, []);
+
+  // สุ่มคำมาแสดง
+  const handleClick = () => {
+    // เลือกข้อความสุ่มจากอาเรย์ messages
+    //ใช้ Math.random() เพื่อสุ่มเลขระหว่าง 0 และ 1 แล้วคูณด้วยความยาวของอาเรย์ messages เพื่อให้ได้ดัชนีที่สุ่ม
+    //Math.floor() ใช้เพื่อลดทอนค่าให้เป็นจำนวนเต็ม
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+    // สร้างข้อความใหม่ที่มี id และข้อความที่สุ่มเลือก
+    const newMessage = {
+      id: Date.now(), // ใช้ timestamp เพื่อให้ได้ id ที่ไม่ซ้ำ
+      text: randomMessage,
+    };
+    // อัปเดตสถานะด้วยการเพิ่มข้อความใหม่เข้าไปในอาเรย์ข้อความเดิมด้วย
+    setFloatingMessages((prevMessages) => [...prevMessages, newMessage]);
+
+    // ให้ข้อความหายไปหลังจาก 12 วินาที
+    setTimeout(() => {
+      setFloatingMessages((prevMessages) =>
+        // กรองออกข้อความที่มี id ตรงกับ newMessage.id
+        prevMessages.filter((message) => message.id !== newMessage.id)
+      );
+    }, 12000);
+  };
 
   //about me
   const changeAboutme = () => {
@@ -99,9 +108,7 @@ export default function Toyou() {
       .catch((err) => console.error("Failed to copy!", err));
   };
 
-  //section book
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  //section handle book
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? recommendedBooks.length - 1 : prevIndex - 1
@@ -194,8 +201,8 @@ export default function Toyou() {
             <p>{recommendedBooks[currentIndex].detailBook}</p>
 
             <div className="btn-book-card">
-              <button onClick={handlePrev}>ซ้าย</button>
-              <button onClick={handleNext}>ขวา</button>
+              <button onClick={handlePrev}>Back</button>
+              <button onClick={handleNext}>Next</button>
             </div>
           </div>
         ) : (

@@ -1,12 +1,12 @@
 // Chapter1.jsx
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../../App";
-import "./chapter1.css"; // นำเข้าไฟล์ CSS
-import background1 from "../../../gifs/chapter1-work.gif";
-import background2 from "../../../gifs/chapter1.1-work.gif";
+import "../../employeeLoop/chapter1/chapter1.css"; // นำเข้าไฟล์ CSS
+import background1 from "../../../gifs/chapter1-1-student.gif";
+import background2 from "../../../gifs/chapter1-2-student.gif";
 import { useNavigate } from "react-router-dom";
 
-export default function Chapter1() {
+export default function Student1() {
   const { userName } = useContext(DataContext);
   const { userDream, setUserDream } = useContext(DataContext);
 
@@ -26,13 +26,14 @@ export default function Chapter1() {
   //chapter1
   const content = [
     "ในเมืองใหญ่ที่วุ่นวาย ที่ต้องใช้ชีวิตในแต่ละวันอย่างเคร่งเครียด",
-    "การเดินทางจากบ้านไปที่ทำงานและกลับบ้านในตอนเย็นเป็นกิจวัตร",
-    `${userName} เป็นพนักงานประจำอยู่ที่แห่งหนึ่ง ซึ่งเป็นแหล่งหาเลี้ยงชีพหลัก`,
-    `ระหว่างทางกลับ ${userName}มองไปรอบๆ เห็นผู้คนที่ดูเร่งรีบ ไม่มีใครมีรอยยิ้ม`,
+    "การเดินทางจากที่พักไปที่มหาวิทยาลัยและกลับหลังเลิกเรียนเป็นกิจวัตร",
+    `${userName} เป็นนักศึกษาอยู่ที่มหาวิทยาลัยแห่งหนึ่ง`,
+    `ระหว่างทางกลับ ${userName} มองไปรอบๆ เห็นเพื่อนที่ดูเร่งรีบและบ้างก็ยุ่งกับการเรียน ไม่มีใครมีรอยยิ้ม`,
     "ความรู้สึกในแต่ละวัน หมุนเวียนซ้ำๆ ไม่เคยเปลี่ยนแปลง",
     "แต่ในใจลึกๆ ตัวเขารู้สึกว่าชีวิตของเขา ขาดอะไรบางอย่าง",
     "บางอย่างที่เคยได้ฝัน เมื่อนานมาแล้ว",
   ];
+  
 
   // สถานะสำหรับบรรทัดที่จะแสดง
   const [currentLine, setCurrentLine] = useState(0);

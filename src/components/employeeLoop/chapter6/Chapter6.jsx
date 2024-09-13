@@ -68,7 +68,7 @@ export default function Chapter6() {
       ];
     } else if (value === 2) {
       newContent = [
-        `ไม่มีปัญหาเลยครับ ทุกคนมีช่วงเวลาที่ต้องเตรียมตัวและฝึกฝน`,
+        `มันไม่เป็นปัญหาเลย ทุกคนมีช่วงเวลาที่ต้องเตรียมตัวและฝึกฝน`,
         `การยอมรับความรู้สึกของตัวเองเป็นก้าวแรกที่ดี`,
         `ค่อยๆ หาความมั่นใจและสร้างความพร้อมตามความสามารถของตัวเอง`,
         `เพื่อที่คุณจะได้พร้อมสำหรับการเดินหน้าเมื่อถึงเวลาที่เหมาะสม`,
@@ -79,6 +79,7 @@ export default function Chapter6() {
     setCurrentLineIndex(0); // รีเซ็ต index ของบรรทัดเริ่มต้น
   };
 
+  // แสดงปุ่มหลังจากใช้ answer() ไปหลัง 4 วิ
   useEffect(() => {
     if (answer) {
       const timer = setTimeout(() => {
@@ -87,6 +88,10 @@ export default function Chapter6() {
       return () => clearTimeout(timer);
     }
   }, [answer]);
+
+  
+
+
 
   const handleNextPage = () => {
     navigate("/chapterend");
