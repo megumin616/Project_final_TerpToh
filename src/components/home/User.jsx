@@ -3,6 +3,7 @@ import { DataContext } from "../../App";
 import "./user.css";
 import { useNavigate } from "react-router-dom";
 import { useAudio } from "../audio/Audio";
+import logo from '../../gifs/Logo.png';
 
 //function
 import { handleNextClick } from "./function";
@@ -52,7 +53,8 @@ export default function User() {
       <div className="user-detail">
         <div className="user-text">
           <div>
-            <h1>เติบโต</h1>
+            {/* <h1>เติบโต</h1> */}
+            <img src={logo} width={150} height={150}/>
           </div>
           <div>
             {/* ช่องกรอกชื่อ */}

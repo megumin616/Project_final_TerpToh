@@ -20,6 +20,9 @@ function App() {
   const [userName, setUserName] = useState(
     () => localStorage.getItem("userName") || ""
   ); //ชื่อผู้ใช้
+  //   localStorage.getItem("userName"): ฟังก์ชันนี้จะดึงค่าที่เคยถูกเก็บใน Local Storage ภายใต้คีย์ userName. ถ้ามีค่าที่ถูกเก็บไว้, ค่าเหล่านั้นจะถูกดึงมาใช้งาน.
+  //   || "": ในกรณีที่ไม่มีค่าใน Local Storage (หรือค่าเป็น null), จะใช้ค่าว่าง ("") แทน.
+
   const [userAge, setUserAge] = useState(
     () => localStorage.getItem("userAge") || ""
   ); //อายุผู้ใช้
@@ -32,29 +35,30 @@ function App() {
 
   const containerRef = useRef(null);
 
-  const enterFullscreen = () => {
-    const elem = containerRef.current; // ใช้ ref เพื่ออ้างอิงถึงองค์ประกอบที่เราต้องการให้เต็มจอ
-    if (elem) {
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen()
-          .then(() => console.log("Entered fullscreen mode"))
-          .catch((err) => console.log("Error entering fullscreen: ", err));
-      } else if (elem.webkitRequestFullscreen) { // Safari
+const enterFullscreen = () => {
+    const elem = containerRef.current; // ใช้ ref เพื่ออ้างอิงถึงองค์ประกอบ (element) ที่เราต้องการทำให้แสดงผลแบบเต็มหน้าจอ
+    if (elem) { // ตรวจสอบว่ามีองค์ประกอบที่อ้างอิงอยู่หรือไม่
+      if (elem.requestFullscreen) { // ตรวจสอบว่าเบราว์เซอร์รองรับฟังก์ชัน requestFullscreen (มาตรฐานของเบราว์เซอร์ส่วนใหญ่)
+        elem.requestFullscreen() // เรียกใช้งานโหมดเต็มจอ
+          .then(() => console.log("Entered fullscreen mode")) // ถ้าสำเร็จจะแสดงข้อความใน console
+          .catch((err) => console.log("Error entering fullscreen: ", err)); // ถ้าเกิดข้อผิดพลาดจะแสดงข้อความ error
+      } else if (elem.webkitRequestFullscreen) { // สำหรับ Safari ซึ่งใช้ webkitRequestFullscreen
         console.log("Fullscreen Safari");
-        elem.webkitRequestFullscreen();
-      } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.webkitRequestFullscreen(); // เรียกใช้โหมดเต็มจอสำหรับ Safari
+      } else if (elem.mozRequestFullScreen) { // สำหรับ Firefox ซึ่งใช้ mozRequestFullScreen
         console.log("Fullscreen Firefox");
-        elem.mozRequestFullScreen();
-      } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.mozRequestFullScreen(); // เรียกใช้โหมดเต็มจอสำหรับ Firefox
+      } else if (elem.msRequestFullscreen) { // สำหรับ IE/Edge ซึ่งใช้ msRequestFullscreen
         console.log("Fullscreen Edge");
-        elem.msRequestFullscreen();
+        elem.msRequestFullscreen(); // เรียกใช้โหมดเต็มจอสำหรับ IE/Edge
       } else {
-        console.log("Fullscreen API is not supported in this browser.");
+        console.log("Fullscreen API is not supported in this browser."); // ถ้าเบราว์เซอร์ไม่รองรับ Fullscreen API จะแสดงข้อความว่าไม่รองรับ
       }
     } else {
-      console.log("Element not found");
+      console.log("Element not found"); // ถ้าไม่พบองค์ประกอบที่ต้องการทำให้เต็มจอจะแสดงข้อความว่าไม่พบ
     }
   };
+
   
   
 

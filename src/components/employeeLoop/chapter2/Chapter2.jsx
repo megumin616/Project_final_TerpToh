@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./chapter2.css";
 import { DataContext } from "../../../App";
 import background from "../../../gifs/chapter2-work.gif";
+import background2 from "../../../gifs/chapter2-2-work.gif"
 import { useNavigate } from "react-router-dom";
 
 export default function Chapter2() {
@@ -9,6 +10,7 @@ export default function Chapter2() {
   const { userFeelDream, setUserFeelDream } = useContext(DataContext);
 
   const bg = background;
+  const bg2 = background2;
 
   const navigate = useNavigate();
 
@@ -33,9 +35,12 @@ export default function Chapter2() {
     `ที่เต็มไปด้วยภาพวาดและข้อความเกี่ยวกับความฝันในการเป็น ${userDream}`,
     `${userName} รู้สึกถึงความตื่นเต้นที่เคยมีเมื่อครั้งเป็นเด็ก`,
     `ความฝันที่เคยสดใสตอนนั้นกลับมามีชีวิตอีกครั้งในความคิดของ ${userName}`,
-    "เขาเริ่มต้นเปิดสมุดบันทึกและอ่านข้อความที่เขาเขียนไว้",
+    "เขาได้เปิดสมุดไปหน้าถัดไปและอ่านข้อความที่เขาเคยเขียนไว้",
     "ข้อความนั้นเล่าว่า 'อย่าลืมความฝันของเรา...อย่าลืมเหตุผลที่เรารักในสิ่งนี้'",
-    `${userName} เริ่มรู้สึกว่าความฝันนั้นไม่ใช่แค่ความทรงจำ แต่เป็นแรงบันดาลใจที่เขาต้องการ`,
+    "'อย่าหยุดเดินแม้ว่าก้าวนั้นจะเล็กน้อย'",
+    "'อย่ารอคอยให้มันเกิดขึ้น แต่เราต้องสร้างด้วยมือของเราเอง'",
+    "'ทุกความล้มเหลวคือบทเรียน ทุกความพยายามคือก้าวที่ใกล้ความสำเร็จขึ้น'",
+    `${userName} เริ่มรู้สึกว่าความฝันนั้นไม่ใช่แค่ความทรงจำ แต่เป็นแรงบันดาลใจที่เขาเคยต้องการ`,
     "(ความฝันนั้นจะนำพาเขาไปสู่ที่ไหนกันนะ)",
   ];
 
@@ -55,6 +60,14 @@ export default function Chapter2() {
       }, 200); // เริ่มต้นทันทีหลังจากที่ header ซ่อน
     }
   }, [showHeader]);
+
+    // ##เปลี่ยน background เมื่อถึงบรรทัดที่กำหมด
+    useEffect(() => {
+      if (currentLine === 4) {
+        // เมื่อถึงบรรทัดที่ 3 (index 2)
+        setBackgroundImage(`url(${bg2})`); // เปลี่ยน backgroundImage
+      }
+    }, [currentLine]);
 
   // ใช้ effect สำหรับหน่วงเวลาในการแสดงข้อความ content หลังจากที่ header ถูกซ่อน
   useEffect(() => {

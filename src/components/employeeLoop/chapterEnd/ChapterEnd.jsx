@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAudio } from "../../audio/Audio";
 
 export default function ChapterEnd() {
-  const { togglePlay1 } = useAudio();
+  // const { togglePlay2 } = useAudio();
   const { userName } = useContext(DataContext);
   const navigate = useNavigate();
 
@@ -83,7 +83,7 @@ export default function ChapterEnd() {
   };
 
   const handleNext = () => {
-    togglePlay1();
+    // togglePlay2();
     navigate("/toyou");
   };
 
