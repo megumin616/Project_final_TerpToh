@@ -31,6 +31,7 @@
   transition: background-image 2s ease-in-out;
   /* การเปลี่ยนแปลงภาพพื้นหลัง */
   /* background: white; */
+  width: 100%;
 }
 
 .chapter1-detail {

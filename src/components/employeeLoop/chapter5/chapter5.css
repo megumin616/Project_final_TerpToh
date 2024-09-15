@@ -43,6 +43,7 @@
     /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
     transition: background-image 2s ease-in-out;
     /* การเปลี่ยนแปลงภาพพื้นหลัง */
+    width: 100%;
 }
 
 .chapter5-detail {

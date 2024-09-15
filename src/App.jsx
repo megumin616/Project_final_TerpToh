@@ -114,12 +114,12 @@ const enterFullscreen = () => {
 
   return (
     <div ref={containerRef} 
-    style={{
-      height: '100vh',       // ความสูงเต็มหน้าจอ
-      width: '100vw',        // ความกว้างเต็มหน้าจอ
-      backgroundColor: '#f0f0f0', // สีพื้นหลัง
-    }}
-    //  className="main-router-container"
+    // style={{
+    //   height: '100vh',       // ความสูงเต็มหน้าจอ
+    //   width: '100vw',        // ความกว้างเต็มหน้าจอ
+    //   backgroundColor: '#f0f0f0', // สีพื้นหลัง
+    // }}
+     className="main-router-container"
     >
       <BrowserRouter>
       <DataContext.Provider value={userContextValue}>

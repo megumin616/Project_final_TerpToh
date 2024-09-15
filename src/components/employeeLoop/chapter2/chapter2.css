@@ -22,6 +22,7 @@
     background-repeat: no-repeat; /* ป้องกันไม่ให้ภาพซ้ำ */
     background-position: center; /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
     transition: background-image 2s ease-in-out; /* การเปลี่ยนแปลงภาพพื้นหลัง */
+    width: 100%;
   }
   .chapter2-detail {
     position: relative;
