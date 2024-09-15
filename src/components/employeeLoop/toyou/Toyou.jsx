@@ -158,7 +158,8 @@ export default function Toyou() {
         {blockDisplay ? (
           <div className="profile-card">
             {/* <img src="your-image.jpg" alt="Profile Picture" className="profile-image"/> */}
-            <h1 className="name">ชื่อ: Warathep Tanyaruk</h1>
+            <div className="profile-detail">
+            <h1 className="name" style={{fontSize: '25px'}}>ชื่อ: Warathep Tanyaruk</h1>
             <p className="age">อายุ: 22</p>
             <p className="education">สถานที่ศึกษา: RBRU</p>
             <p className="about-profile">
@@ -177,6 +178,7 @@ export default function Toyou() {
               เพราะในท้ายที่สุดแล้ว ความสุขไม่ได้มาจากภายนอก
               แต่มาจากภายในจิตใจของเราเอง
             </p>
+            </div>
             <div className="contact-profile">
               <h2>ช่องทางติดต่อ</h2>
               <div className="contantflex">
@@ -191,14 +193,14 @@ export default function Toyou() {
 
         {booksDisplay ? (
           <div className="books-card">
-            <h2>{recommendedBooks[currentIndex].nameBook}</h2>
+            <h2 className="book-namebook">{recommendedBooks[currentIndex].nameBook}</h2>
             <h4>by {recommendedBooks[currentIndex].author}</h4>
             <img
+              className="img-toyou-book"
               src={recommendedBooks[currentIndex].imgBook}
               alt={recommendedBooks[currentIndex].nameBook}
-              style={{ width: "200px", height: "300px" }}
             />
-            <p>{recommendedBooks[currentIndex].detailBook}</p>
+            <p className="book-details">{recommendedBooks[currentIndex].detailBook}</p>
 
             <div className="btn-book-card">
               <button onClick={handlePrev}>Back</button>
@@ -250,8 +252,8 @@ export default function Toyou() {
                   <img onClick={copyToClipboard} src={copy} />
                   {isCopied && <span className="copy-notice">คัดลอกแล้ว!</span>}
                 </p>
-                <p>ชื่อบัญชี: วราเทพ ธัญญารักษ์</p>
-                <p>ขอบคุณมากๆครับ!</p>
+                <p className="name-account-bank">ชื่อบัญชี: วราเทพ ธัญญารักษ์</p>
+                <p className="name-account-bank">ขอบคุณมากๆครับ!</p>
               </div>
             </div>
           </div>

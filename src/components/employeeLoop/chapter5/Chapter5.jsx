@@ -183,9 +183,10 @@ export default function Chapter5() {
             <h3>{booksAll[currentIndex].nameBook}</h3>
             <p>{booksAll[currentIndex].author}</p>
             <img
+              className="img-chapter5-book"
               src={booksAll[currentIndex].imgBook}
               alt={booksAll[currentIndex].nameBook}
-              height={200}
+              // height={200}
             />
             <p>{booksAll[currentIndex].detailBook}</p>
             <button onClick={nextBook}>

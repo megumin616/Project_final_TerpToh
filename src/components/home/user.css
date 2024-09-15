@@ -6,6 +6,8 @@
     background-position: center; /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
     display: flex;
     justify-content: center;
+    /* border: 1px solid red; */
+    /* width: 100%; */
 }
 .user-detail {
     display: flex;

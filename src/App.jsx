@@ -59,6 +59,27 @@ const enterFullscreen = () => {
     }
   };
 
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (document.fullscreenElement) {
+        containerRef.current.style.display = 'flex';
+        containerRef.current.style.justifyContent = 'center';
+        containerRef.current.style.alignItems = 'center';
+      } else {
+        // Reset styles when exiting fullscreen
+        containerRef.current.style.display = '';
+        containerRef.current.style.justifyContent = '';
+        containerRef.current.style.alignItems = '';
+      }
+    };
+  
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+  
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
   
   
 
@@ -92,11 +113,14 @@ const enterFullscreen = () => {
   };
 
   return (
-    <div ref={containerRef} style={{
+    <div ref={containerRef} 
+    style={{
       height: '100vh',       // ความสูงเต็มหน้าจอ
       width: '100vw',        // ความกว้างเต็มหน้าจอ
       backgroundColor: '#f0f0f0', // สีพื้นหลัง
-    }}>
+    }}
+    //  className="main-router-container"
+    >
       <BrowserRouter>
       <DataContext.Provider value={userContextValue}>
         <AudioProvider>

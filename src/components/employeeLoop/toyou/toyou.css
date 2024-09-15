@@ -217,7 +217,7 @@
   background: rgba(255, 255, 255, 0.473);
   border-radius: 80% 50%;
   margin-bottom: 4rem;
-  position: relative;
+  /* position: relative; */
 }
 .books-card p {
   max-width: 50%;
@@ -228,8 +228,8 @@
 .btn-book-card {
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: 10px;
+  /* position: absolute;
+  bottom: 15%; */
 }
 .btn-book-card button {
   width: 5rem;
@@ -239,20 +239,42 @@
   padding: 3px;
   border-radius: 5px;
   color: white;
-  font-size: 15px;
+  font-size: 3vw;
 }
+.book-namebook {
+  font-size: 4vw;
+}
+.book-details {
+  font-size: 3vw;
+}
+
+
+
+
 
 .profile-card {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   height: 100vh;
   /* max-width: 50%; */
   text-align: center;
   background: rgba(255, 255, 255, 0.473);
   border-radius: 50% 80%;
   margin-bottom: 4rem;
+}
+.profile-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-detail .education {
+  margin: 0;
+  padding: 0;
 }
 .contantflex {
   display: flex;
@@ -265,6 +287,22 @@
 .about-profile {
   padding: 0 2rem;
   max-width: 80%;
+  /* height: 100vh; */
+}
+.name {
+  font-size: 4vw; /* ขนาดตัวหนังสือจะยืดหยุ่นตามความกว้างของหน้าจอ */
+}
+
+.age, .education, .about-profile, .contact-profile {
+  font-size: 3vw; /* ขนาดยืดหยุ่นตามความกว้างของหน้าจอ */
+}
+
+
+
+
+.img-toyou-book {
+  width: 200px;
+  height: 300px;
 }
 
 
@@ -292,6 +330,13 @@
   position: relative;
   width: 300px;
   text-align: center;
+}
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .qr-container img {
@@ -322,6 +367,12 @@
 .copyable {
   display: flex;
   position: relative;
+  margin: 0;
+  padding: 0;
+}
+.name-account-bank {
+  margin: 0;
+  padding: 0;
 }
 .copyable img {
   width: 20px;

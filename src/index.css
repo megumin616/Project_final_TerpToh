@@ -3,6 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* สำหรับหน้าจอมือถือ */
+@media (max-width: 480px) {
+  p {
+    font-size: 15px;
+  }
+  .img-toyou-book {
+    width: 100px;
+    height: auto;
+  }
+  .img-chapter5-book {
+    width: 100px;
+    height: auto;
+  }
+  .show-buttonask button{
+    font-size: 13px;
+  }
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

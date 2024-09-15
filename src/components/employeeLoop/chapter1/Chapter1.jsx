@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../../App";
 import "./chapter1.css"; // นำเข้าไฟล์ CSS
+import "../../../App.css"
 import background1 from "../../../gifs/chapter1-work.gif";
 import background2 from "../../../gifs/chapter1.1-work.gif";
 import { useNavigate } from "react-router-dom";

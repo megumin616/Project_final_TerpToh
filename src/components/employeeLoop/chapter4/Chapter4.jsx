@@ -281,7 +281,7 @@ export default function Chapter4() {
         <div className="question-chapter4">
           <p>
             นอกจากครอบครัวและตัวฉันเองแล้ว
-            ฉันใช้เวลาร่วมกับใครมากที่เป็นพิเศษไหม?
+            ฉันใช้เวลาร่วมกับใครมากเป็นพิเศษไหม?
           </p>
           <div className="btn-qsk">
             <button onClick={handleAnswer2}>เพื่อนของฉัน</button>

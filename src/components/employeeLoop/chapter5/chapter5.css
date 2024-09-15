@@ -70,6 +70,11 @@
     border-radius: 25px;
 }
 
+.img-chapter5-book {
+    width: 200px;
+    height: 300px;
+}
+
 .btn-chapter5 {
     position: absolute;
     bottom: 5%;
