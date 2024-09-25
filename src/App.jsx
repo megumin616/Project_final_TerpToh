@@ -13,6 +13,7 @@ import ChapterEnd from "./components/employeeLoop/chapterEnd/ChapterEnd";
 import Toyou from "./components/employeeLoop/toyou/toyou";
 import { AudioProvider } from "./components/audio/Audio";
 import Student1 from "./components/studentLoop/chapter1/Student1";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export const DataContext = createContext();
 
@@ -32,23 +33,32 @@ function App() {
   const [userFeelDream, setUserFeelDream] = useState(
     () => localStorage.getItem("userFeelDream") || ""
   ); //ความรู้สึกหากความฝันเป็นจริง
+  // const [selectedOption, setSelectedOption] = useState(
+  //   () => localStorage.getItem("selectedOption") || ""
+  // ); // ตัวเลือกของผู้ใช้
 
   const containerRef = useRef(null);
 
-const enterFullscreen = () => {
+  const enterFullscreen = () => {
     const elem = containerRef.current; // ใช้ ref เพื่ออ้างอิงถึงองค์ประกอบ (element) ที่เราต้องการทำให้แสดงผลแบบเต็มหน้าจอ
-    if (elem) { // ตรวจสอบว่ามีองค์ประกอบที่อ้างอิงอยู่หรือไม่
-      if (elem.requestFullscreen) { // ตรวจสอบว่าเบราว์เซอร์รองรับฟังก์ชัน requestFullscreen (มาตรฐานของเบราว์เซอร์ส่วนใหญ่)
-        elem.requestFullscreen() // เรียกใช้งานโหมดเต็มจอ
+    if (elem) {
+      // ตรวจสอบว่ามีองค์ประกอบที่อ้างอิงอยู่หรือไม่
+      if (elem.requestFullscreen) {
+        // ตรวจสอบว่าเบราว์เซอร์รองรับฟังก์ชัน requestFullscreen (มาตรฐานของเบราว์เซอร์ส่วนใหญ่)
+        elem
+          .requestFullscreen() // เรียกใช้งานโหมดเต็มจอ
           .then(() => console.log("Entered fullscreen mode")) // ถ้าสำเร็จจะแสดงข้อความใน console
           .catch((err) => console.log("Error entering fullscreen: ", err)); // ถ้าเกิดข้อผิดพลาดจะแสดงข้อความ error
-      } else if (elem.webkitRequestFullscreen) { // สำหรับ Safari ซึ่งใช้ webkitRequestFullscreen
+      } else if (elem.webkitRequestFullscreen) {
+        // สำหรับ Safari ซึ่งใช้ webkitRequestFullscreen
         console.log("Fullscreen Safari");
         elem.webkitRequestFullscreen(); // เรียกใช้โหมดเต็มจอสำหรับ Safari
-      } else if (elem.mozRequestFullScreen) { // สำหรับ Firefox ซึ่งใช้ mozRequestFullScreen
+      } else if (elem.mozRequestFullScreen) {
+        // สำหรับ Firefox ซึ่งใช้ mozRequestFullScreen
         console.log("Fullscreen Firefox");
         elem.mozRequestFullScreen(); // เรียกใช้โหมดเต็มจอสำหรับ Firefox
-      } else if (elem.msRequestFullscreen) { // สำหรับ IE/Edge ซึ่งใช้ msRequestFullscreen
+      } else if (elem.msRequestFullscreen) {
+        // สำหรับ IE/Edge ซึ่งใช้ msRequestFullscreen
         console.log("Fullscreen Edge");
         elem.msRequestFullscreen(); // เรียกใช้โหมดเต็มจอสำหรับ IE/Edge
       } else {
@@ -59,29 +69,26 @@ const enterFullscreen = () => {
     }
   };
 
-
   useEffect(() => {
     const handleFullscreenChange = () => {
       if (document.fullscreenElement) {
-        containerRef.current.style.display = 'flex';
-        containerRef.current.style.justifyContent = 'center';
-        containerRef.current.style.alignItems = 'center';
+        containerRef.current.style.display = "flex";
+        containerRef.current.style.justifyContent = "center";
+        containerRef.current.style.alignItems = "center";
       } else {
         // Reset styles when exiting fullscreen
-        containerRef.current.style.display = '';
-        containerRef.current.style.justifyContent = '';
-        containerRef.current.style.alignItems = '';
+        containerRef.current.style.display = "";
+        containerRef.current.style.justifyContent = "";
+        containerRef.current.style.alignItems = "";
       }
     };
-  
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-  
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
     return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
-  
-  
 
   // ฟังก์ชันที่ใช้เก็บข้อมูลลงใน Local Storage เมื่อ state เปลี่ยนแปลง
   useEffect(() => {
@@ -100,6 +107,10 @@ const enterFullscreen = () => {
     localStorage.setItem("userFeelDream", userFeelDream);
   }, [userFeelDream]);
 
+  // useEffect(() => {
+  //   localStorage.setItem("selectedOption", selectedOption);
+  // }, [selectedOption]);
+
   const userContextValue = {
     userName,
     setUserName,
@@ -109,25 +120,27 @@ const enterFullscreen = () => {
     setUserDream,
     userFeelDream,
     setUserFeelDream,
-    enterFullscreen
+    // setSelectedOption, // เพิ่มบรรทัดนี้
+    enterFullscreen,
   };
 
   return (
-    <div ref={containerRef} 
-    // style={{
-    //   height: '100vh',       // ความสูงเต็มหน้าจอ
-    //   width: '100vw',        // ความกว้างเต็มหน้าจอ
-    //   backgroundColor: '#f0f0f0', // สีพื้นหลัง
-    // }}
-     className="main-router-container"
+    <div
+      ref={containerRef}
+      // style={{
+      //   height: '100vh',       // ความสูงเต็มหน้าจอ
+      //   width: '100vw',        // ความกว้างเต็มหน้าจอ
+      //   backgroundColor: '#f0f0f0', // สีพื้นหลัง
+      // }}
+      className="main-router-container"
     >
       <BrowserRouter>
-      <DataContext.Provider value={userContextValue}>
-        <AudioProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/chapter1" element={<Chapter1 />} />
+        <DataContext.Provider value={userContextValue}>
+          <AudioProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/user" element={<User />} />
+              {/* <Route path="/chapter1" element={<Chapter1 />} />
             <Route path="/chapter2" element={<Chapter2 />} />
             <Route path="/chapter3" element={<Chapter3 />} />
             <Route path="/chapter4" element={<Chapter4 />} />
@@ -136,11 +149,85 @@ const enterFullscreen = () => {
             <Route path="/chapterend" element={<ChapterEnd />} />
             <Route path="/toyou" element={<Toyou />} />
 
-            <Route path="/student1" element={<Student1 />} />
-          </Routes>
-        </AudioProvider>
-      </DataContext.Provider>
-    </BrowserRouter>
+            <Route path="/student1" element={<Student1 />} /> */}
+
+              {/* ห่อหุ้ม Route ด้วย ProtectedRoute */}
+              <Route
+                path="/chapter1"
+                element={
+                  <ProtectedRoute>
+                    <Chapter1 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapter2"
+                element={
+                  <ProtectedRoute>
+                    <Chapter2 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapter3"
+                element={
+                  <ProtectedRoute>
+                    <Chapter3 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapter4"
+                element={
+                  <ProtectedRoute>
+                    <Chapter4 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapter5"
+                element={
+                  <ProtectedRoute>
+                    <Chapter5 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapter6"
+                element={
+                  <ProtectedRoute>
+                    <Chapter6 />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/chapterend"
+                element={
+                  <ProtectedRoute>
+                    <ChapterEnd />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/toyou"
+                element={
+                  <ProtectedRoute>
+                    <Toyou />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/student1"
+                element={
+                  <ProtectedRoute>
+                    <Student1 />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </AudioProvider>
+        </DataContext.Provider>
+      </BrowserRouter>
     </div>
   );
 }
